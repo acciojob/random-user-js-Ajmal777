@@ -16,9 +16,17 @@ async function getData(){
 	}
 }
 let user;
+async function firstCall(){
+	user = await getData();
+	image.setAttribute('src', user.results[0].picture.large);
+	name.innerText = user.results[0].name.first + " " + user.results[0].name.last;
+}
+
+firstCall();
 getUser.addEventListener('click', async () => {
 	user = await getData();
 	image.setAttribute('src', user.results[0].picture.large);
+	details.innerText = "";
 	name.innerText = user.results[0].name.first + " " + user.results[0].name.last;
 })
 
